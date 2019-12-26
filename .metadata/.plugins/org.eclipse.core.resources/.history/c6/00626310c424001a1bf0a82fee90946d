@@ -1,0 +1,5 @@
+package br.com.luankosaka.SpringAdvanced.services;
+
+public interface ProductService {
+
+}

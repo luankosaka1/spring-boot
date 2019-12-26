@@ -1,0 +1,42 @@
+package br.com.luankosaka.SpringAdvanced;
+
+import java.util.ArrayList;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig {
+	private String title = "Title - Rest API";
+	private String description = "My Description";
+	private String version = "1.0.0";
+	private String terms = "Terms";
+	private String licence = "Apache License";
+	private String licenceUrl = "url";
+	
+	@Bean
+	public Docket apiConfigDocs() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("br.com.luankosaka.SpringAdvanced.resources"))
+				.paths(PathSelectors.ant("/api/*"))
+				.build();
+	}
+	
+	private ApiInfo infoDocs() {
+		return new ApiInfo(title, description, version, terms, this.getContact() , licence, licenceUrl, new ArrayList<VendorExtension>());
+	}
+	
+	private Contact getContact() {
+		return new Contact("Luan", "luankosaka.com", "luan.kosaka@gmail.com")
+	}
+}

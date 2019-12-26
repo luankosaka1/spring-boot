@@ -1,0 +1,49 @@
+package br.com.luankosaka.SpringAdvanced.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import br.com.luankosaka.SpringAdvanced.models.Product;
+import br.com.luankosaka.SpringAdvanced.repository.ProductRepository;
+
+public class ProductServiceImpl implements ProductService {
+	@Autowired
+	private ProductRepository productRepository;
+
+	public ProductServiceImpl(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
+
+	@Override
+	public List<Product> findAll() {
+		return this.productRepository.findAll();
+	}
+
+	@Override
+	public Product find(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Product create(Product product) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Product update(Long id, Product product) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Long id) {
+		Product product = this.productRepository.findOne(id);
+		if (product != null) {
+			
+		}
+	}
+
+}

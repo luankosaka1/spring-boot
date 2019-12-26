@@ -1,0 +1,5 @@
+package br.com.luankosaka.SpringAdvanced.repository;
+
+public interface ProductRepository {
+
+}
